@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestaurantsActivity">
+    tools:context=".ui.RestaurantsActivity">
 
     <ListView
         android:layout_width="match_parent"
@@ -13,5 +13,10 @@
         android:layout_below="@+id/locationTextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
 
 </android.support.constraint.ConstraintLayout>
