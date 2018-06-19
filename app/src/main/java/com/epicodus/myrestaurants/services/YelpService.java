@@ -14,7 +14,7 @@ public static void findRestaurants(String location, Callback callback) {
 
         OkHttpClient client = new OkHttpClient.Builder()
         .addInterceptor(new SigningInterceptor(consumer))
-        .build();
+        .buld
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.YELP_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.YELP_LOCATION_QUERY_PARAMETER, location);

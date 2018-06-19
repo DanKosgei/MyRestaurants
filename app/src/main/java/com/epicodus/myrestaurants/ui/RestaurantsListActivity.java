@@ -7,6 +7,10 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
+
     public static final String TAG = RestaurantsActivity.class.getSimpleName();
 
     @Bind(R.id.locationTextView) TextView mLocationTextView;
@@ -26,6 +30,11 @@ public class RestaurantsActivity extends AppCompatActivity {
         mLocationTextView.setText("Here are all the restaurants near: " + location);
 
         getRestaurants(location);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress !=null) {
+            getRestaurants(mRecentAddress);
     }
 
     private void getRestaurants(String location) {

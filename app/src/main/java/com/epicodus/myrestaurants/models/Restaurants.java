@@ -1,5 +1,10 @@
 package com.epicodus.myrestaurants.models;
 
+import org.parceler.Parcel;
+
+import java.util.ArrayList;
+
+@Parcel
 public class Restaurant {
     private String mName;
     private String mPhone;
