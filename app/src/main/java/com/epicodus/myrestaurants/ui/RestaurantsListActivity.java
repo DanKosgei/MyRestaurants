@@ -11,6 +11,10 @@ public class RestaurantsActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private String mRecentAddress;
 
+    private void addToSharedPreferences(String location){
+            mEditor.putString(Constants.PREFEENCES_LOCATION_KEY,location).apply();
+    }
+}
     public static final String TAG = RestaurantsActivity.class.getSimpleName();
 
     @Bind(R.id.locationTextView) TextView mLocationTextView;
@@ -23,6 +27,17 @@ public class RestaurantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
         ButterKnife.bind(this);
+
+        mSharedPreferences = preferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener())
+
+        return true;
 
         Intent intent = getIntent();
         String location = intent.getStringExtra("location");

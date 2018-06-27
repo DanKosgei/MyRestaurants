@@ -1,5 +1,11 @@
 package com.epicodus.myrestaurants.Adapters;
 
+import android.view.View;
+
+import com.epicodus.myrestaurants.models.Restaurant;
+
+import org.parceler.Parcels;
+
 import butterknife.Bind;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
@@ -26,6 +32,14 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             mContext = itemView.getContext();
         }
 
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent (mContext, RestaurantDetailActivity.class);
+            intent.putExtra("restaurants", Parcels.wrap(mRestaurants));
+            mContext.startActivity(intent);
+        }
         public void bindRestaurant(Restaurant restaurant) {
             mNameTextView.setText(restaurant.getName());
             mCategoryTextView.setText(restaurant.getCategories().get(0));
